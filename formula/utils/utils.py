@@ -27,7 +27,10 @@ DEFAULTS = {
     'FORMULA_FORMULAS_PATH': 'formula.formulas',
     'FORMULA_KEYWORD': 'Formula',
     'FORMULA_TRIM_SPACES': '_',
-    'FORMULA_TITLE_STRING': True
+    'FORMULA_TITLE_STRING': True,
+    'FORMULA_ERROR_MESSAGE': '#ERROR',
+    'FORMULA_NA_MESSAGE': '#N/A',
+    'FORMULA_NUM_MESSAGE': '#NUM'
 
 }
 

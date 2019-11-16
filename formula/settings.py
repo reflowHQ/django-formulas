@@ -38,18 +38,21 @@ class Structure:
         return random_key
 
     def __formulas_as_list(self):
-        for formula in self.formulas:
-            yield (formula['name'], formula['label_name'])
+        for key, values_list in self.formulas.items():
+            yield [key] + values_list
 
     def get_correct_formula(self, method):
-        for formula in self.__formulas_as_list():
-            if formula[1] == method:
-                return formula[0]
-        return method
+        if self.formulas.get(method, None):
+            return method
+        else:
+            for formula in self.__formulas_as_list():
+                if method in formula:
+                    return formula[0]
 
 
     def is_formula(self, token):
-        names = [formula[0] for formula in self.__formulas_as_list()]
-        label_names = [formula[1] for formula in self.__formulas_as_list()]
-        return token in names or token in label_names
+        for formula in self.__formulas_as_list():
+            if token in formula:
+                return True
+        return False
     

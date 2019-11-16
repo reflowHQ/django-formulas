@@ -1,5 +1,6 @@
 from .exceptions import FormulaException
 from formula.utils.parser import Parser
+from formula.utils.utils import get_settings
 from multiprocessing import queues
 
 class Formula:
@@ -14,8 +15,8 @@ class Formula:
         try:
             return self.__parser.parse()
         except AttributeError as ae:
-            return '#ERROR'
+            return get_settings('FORMULA_ERROR_MESSAGE')
         except queues.Empty as empty:
-            return '#NUM'
+            return get_settings('FORMULA_NUM_MESSAGE')
         except Exception as e:
-            return '#N/A'
+            return get_settings('FORMULA_NA_MESSAGE')

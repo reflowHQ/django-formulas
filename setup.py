@@ -6,14 +6,14 @@ setup(
     url='https://github.com/reflowHQ/django-formulas',
     license='MIT',
     description='A minimal lib to write custom formulas on Django',
-    long_description=open('README.md', 'r', encoding='utf-8').read(),
+    long_description=open('README.md', 'r').read(),
     author='Nicolas Melo',
     author_email='nicolasmelo12@gmail.com',
     install_requires=[
         'django'
     ],
     python_requires='>=3.6,<3.8',
-    extras_require=[],
+    extras_require={},
     packages=find_packages(exclude=['tests']),
     classifiers=[
         'Development Status :: 5 - Production/Stable',

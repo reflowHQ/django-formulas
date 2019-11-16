@@ -1,7 +1,7 @@
-from formula.utils.lexer import Lexer
-from formula.tokens import Token
-from formula.settings import Structure
-from formula.exceptions import ValidateError
+from .utils.lexer import Lexer
+from ..tokens import Token
+from ..settings import Structure
+from ..exceptions import ValidateError
 from django.conf import settings
 import multiprocessing
 

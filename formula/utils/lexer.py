@@ -1,6 +1,6 @@
-from formula.settings import Structure
-from formula.exceptions import FormulaException
-from formula.tokens import Token
+from ..settings import Structure
+from ..exceptions import FormulaException
+from ..tokens import Token
 import re
 
 class Lexer(Structure):
