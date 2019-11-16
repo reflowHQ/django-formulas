@@ -1,4 +1,6 @@
-from .settings import Formula
+class Formula:
+    def valitate(self, parameters):
+        return True
 
 class FormulaSum(Formula):
     def validate(self, parameters):

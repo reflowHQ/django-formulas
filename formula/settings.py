@@ -1,27 +1,21 @@
 import string
 import random
-
+from django.conf import settings
+from .utils import utils
+import collections
 
 class Structure:
-    operations = {
-        '>=': '>=',
-        '<=': '<=',
-        '<>': '!=',
-        '<': '<',
-        '>': '>',
-        '/':'/', 
-        '&':'+',
-        '%':'%', 
-        '-':'-', 
-        '+':'+',
-        '*':'*',
-        '^':'**', 
-        '=': '=='
-    }
+    operations = dict([(operation, utils.get_settings('FORMULA_OPERATIONS'))[operation] for operation in collections.OrderedDict(
+        sorted(
+            dict(
+                [(len(operation), operation) for operation, operaton_reference in utils.get_settings('FORMULA_OPERATIONS').items()]
+                )
+            )
+        ).items()])
 
     types = ['string', 'field', 'number', 'operation']
 
-    formulas = {}
+    formulas =  utils.get_settings('FORMULA_FORMULAS')
 
     to_tokenize = [
         ('string', r'"[^"]*"'),
@@ -58,8 +52,4 @@ class Structure:
         names = [formula[0] for formula in self.__formulas_as_list()]
         label_names = [formula[1] for formula in self.__formulas_as_list()]
         return token in names or token in label_names
-
-class Formula:
-    def valitate(self, parameters):
-        return True
     

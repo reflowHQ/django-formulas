@@ -16,7 +16,6 @@ class Token(Structure):
         When we tokenize the value we tokenize the value `as is`, so the values are not changed, when we retrieve the
         value on the other hand the values are retrieved the `right way`, so a way that python can read and evaluate.
         """
-        
         value = str(self.__raw_value)
         if self.type == 'number':
             value = str(float(value.replace('_', '').replace(',','.')))
@@ -29,6 +28,4 @@ class Token(Structure):
                 # gets value if it exsits in model, otherwise get 0
                 value = self.__model.__dict__.get(value,  0)
             
-            #value = str(float(random.randint(0,10)))
-
         return value

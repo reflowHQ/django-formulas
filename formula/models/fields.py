@@ -2,7 +2,7 @@
 from django.core import exceptions
 from django.db.models import fields
 from django.db import models
-from ..helpers import Formula
+from formula import Formula
 
 
 class FormulaField(fields.CharField):
@@ -27,8 +27,6 @@ class FormulaField(fields.CharField):
             return value
         if isinstance(value, tuple):
             formula, value = value 
-            print(value)
-            print(formula)
             value = Formula(value, formula)
             value = value.value
         elif self.formula:
