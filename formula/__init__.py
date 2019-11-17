@@ -1,6 +1,6 @@
 from .exceptions import FormulaException
-from formula.utils.parser import Parser
-from formula.utils.utils import get_settings
+from .utils.parser import Parser
+from .utils.utils import get_settings
 from multiprocessing import queues
 
 class Formula:

@@ -1,2 +1,3 @@
 include LICENSE README.md
-recursive-include tests *.py
+recursive-include formula/utils *.py
+recursive-include formula/models *.py
