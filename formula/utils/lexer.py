@@ -68,7 +68,6 @@ class Lexer(Structure):
         self.__expression = list(filter(None, self.__expression.split(' ')))
         for index, item in enumerate(self.__expression):
             self.__expression[index] = self.get_correct_formula(item)
-        print(self.__expression)
 
         return self.__validate()
     

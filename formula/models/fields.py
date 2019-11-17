@@ -27,9 +27,9 @@ class FormulaField(fields.CharField):
             return value
         if isinstance(value, tuple):
             formula, value = value 
-            value = Formula(value, formula)
+            value = Formula(formula, value)
             value = value.value
         elif self.formula:
-            value = Formula(value, self.formula)
+            value = Formula(self.formula, value)
             value = value.value
         return value

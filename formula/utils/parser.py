@@ -70,10 +70,10 @@ class Parser(Structure):
         result = multiprocessing.Queue()
         process = multiprocessing.Process(target=self.__to_python, args=(python_evaluated, result))
         process.start()
-        process.join(0.5)
+        process.join(0.1)
         if process.is_alive():
             process.terminate()
-        result = result.get(timeout=0.5)
+        result = result.get(timeout=0.1)
         return result
 
     def __append_token(self, value):

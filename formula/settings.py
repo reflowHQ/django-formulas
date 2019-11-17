@@ -11,7 +11,6 @@ class Structure:
                 )
             )
         ])
-    print(operations)
     types = ['string', 'field', 'number', 'operation']
 
     formulas =  utils.get_settings('FORMULA_FORMULAS')
