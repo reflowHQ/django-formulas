@@ -4,7 +4,7 @@ from ..tokens import Token
 import re
 
 class Lexer(Structure):
-    def __init__(self, model, expression, *args, **kwargs):
+    def __init__(self, expression, model, *args, **kwargs):
         self.__model = model
         self.__expression = '({})'.format(expression)
         self.__tokenized = dict()
@@ -68,6 +68,8 @@ class Lexer(Structure):
         self.__expression = list(filter(None, self.__expression.split(' ')))
         for index, item in enumerate(self.__expression):
             self.__expression[index] = self.get_correct_formula(item)
+        print(self.__expression)
+
         return self.__validate()
     
     def __validate(self):

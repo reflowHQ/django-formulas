@@ -1,4 +1,4 @@
-from .utils.lexer import Lexer
+from .lexer import Lexer
 from ..tokens import Token
 from ..settings import Structure
 from ..exceptions import ValidateError
@@ -6,9 +6,9 @@ from django.conf import settings
 import multiprocessing
 
 class Parser(Structure):
-    def __init__(self, model, expression, *args, **kwargs):
+    def __init__(self, expression, model, *args, **kwargs):
         # lexer validates and do most of the formating of the formula
-        lexer = Lexer(model, expression)
+        lexer = Lexer(expression, model)
         self.__model = model
         self.__tokens = lexer.tokens
         self.__expression = self.__pre_parse(lexer.expression)

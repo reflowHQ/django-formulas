@@ -1,18 +1,17 @@
 import string
 import random
-from django.conf import settings
 from .utils import utils
 import collections
 
 class Structure:
-    operations = dict([(operation, utils.get_settings('FORMULA_OPERATIONS'))[operation] for operation in collections.OrderedDict(
-        sorted(
-            dict(
+    operations = dict([(operation, utils.get_settings('FORMULA_OPERATIONS')[operation]) for __, operation in
+        reversed(
+            sorted(
                 [(len(operation), operation) for operation, operaton_reference in utils.get_settings('FORMULA_OPERATIONS').items()]
                 )
             )
-        ).items()])
-
+        ])
+    print(operations)
     types = ['string', 'field', 'number', 'operation']
 
     formulas =  utils.get_settings('FORMULA_FORMULAS')
@@ -48,7 +47,7 @@ class Structure:
             for formula in self.__formulas_as_list():
                 if method in formula:
                     return formula[0]
-
+        return method
 
     def is_formula(self, token):
         for formula in self.__formulas_as_list():

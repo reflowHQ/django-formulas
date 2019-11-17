@@ -2,7 +2,6 @@ from django.conf import settings
 
 DEFAULTS = {
     'FORMULA_OPERATIONS': {
-        '>=': '>=',
         '<=': '<=',
         '<>': '!=',
         '<': '<',
@@ -13,6 +12,7 @@ DEFAULTS = {
         '-':'-', 
         '+':'+',
         '*':'*',
+        '>=': '>=',
         '^':'**', 
         '=': '=='
     },
@@ -35,4 +35,7 @@ DEFAULTS = {
 }
 
 def get_settings(name):
-    return getattr(settings, name, DEFAULTS[name])
+    try:
+        return getattr(settings, name, DEFAULTS[name])
+    except:
+        return DEFAULTS[name]

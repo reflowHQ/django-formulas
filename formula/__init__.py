@@ -4,9 +4,9 @@ from .utils.utils import get_settings
 from multiprocessing import queues
 
 class Formula:
-    def __init__(self, model, expression, *args, **keywords):
+    def __init__(self, expression, model=None, *args, **keywords):
         try:
-            self.__parser = Parser(model, expression)
+            self.__parser = Parser(expression, model)
         except FormulaException as fe:
             pass
 
