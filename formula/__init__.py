@@ -5,18 +5,18 @@ from multiprocessing import queues
 
 class Formula:
     def __init__(self, expression, model=None, *args, **keywords):
-        #try:
-        self.__parser = Parser(expression, model)
-        #except FormulaException as fe:
-        #    pass
+        try:
+            self.__parser = Parser(expression, model)
+        except FormulaException as fe:
+            pass
 
     @property
     def value(self):
-        #try:
-        return self.__parser.parse()
-        #except AttributeError as ae:
-        #    return get_settings('FORMULA_ERROR_MESSAGE')
-        #except queues.Empty as empty:
-        #    return get_settings('FORMULA_NUM_MESSAGE')
-        #except Exception as e:
-        #    return get_settings('FORMULA_NA_MESSAGE')
+        try:
+            return self.__parser.parse()
+        except AttributeError as ae:
+            return get_settings('FORMULA_ERROR_MESSAGE')
+        except queues.Empty as empty:
+            return get_settings('FORMULA_NUM_MESSAGE')
+        except Exception as e:
+            return get_settings('FORMULA_NA_MESSAGE')
